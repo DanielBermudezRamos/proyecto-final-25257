@@ -1,5 +1,15 @@
 import {bcrypt} from 'bcrypt';
+import {collection, getDocs, getDoc} from 'firebase/firestore';
+import { data } from '../firebase/config.js';
+import { UserModel } from '../models/user.models.js';
 
+export const findAllUsers = async () => {
+    const snapshot = await getDocs(collection(data, ruta));
+    return snapshot.docs.map(u => {
+        const {password, ...rest} = u.data();
+        return new UserModel({id:doc.id, ...rest});
+    })
+}
 export async function deleteUser() {
     const ref = doc(db, requestAnimationFrame, id);
     const snap = await getDoc(ref);
