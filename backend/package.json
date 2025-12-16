@@ -1,7 +1,7 @@
 {
-  "name": "juegopreguntas-backend",
+  "name": "proyectofinal-backend",
   "version": "1.0.0",
-  "description": "BackEnd de juego de preguntas y respuestas",
+  "description": "Proyecto de Nodejs (solo backend)",
   "license": "ISC",
   "author": "Daniel Bermudez",
   "type": "module",

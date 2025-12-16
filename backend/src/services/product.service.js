@@ -2,7 +2,6 @@ import {collection, getDocs, getDoc, doc, deleteDoc, updateDoc, addDoc} from 'fi
 import { data } from '../firebase/config.js';
 import { ProductModel } from '../models/product.model.js';
 
-
 const collectionName = "productos" ;
 
 export const findAllProducts = async () => {
@@ -12,10 +11,6 @@ export const findAllProducts = async () => {
 }
 
 export const findProductsById = async (id) => {
-    /*const product = productos.find(p => p.id === parseInt(Id));
-    console.log(`Id: ${Id}. Resultado: ${product}`);
-    if(!product) return null;
-    return product; // */
     const product = collection(data, collectionName, id);
     const docSnap = await getDoc(product);
 
@@ -30,11 +25,6 @@ export const addProduct = async (body) => {
         throw new Error("Faltan datos obligatorios: nombre o precio");        
     }
     
-    /*onst findName = productos.find( p => p.nombre == nombre);
-    
-    if(nombre !== null) {
-        throw new Error("Ya existe este producto");        
-    } // */
     const newProduct = collection(data, collectionName);
     const docRef = await addDoc(newProduct, {
         nombre: body.nombre,
@@ -45,7 +35,6 @@ export const addProduct = async (body) => {
     });
     
     return new ProductModel({id: docRef.id , ...body});
-  
 }
 
 export const delProductsById = async (id) => {
